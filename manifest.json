@@ -1,0 +1,11 @@
+{
+  "name": "PS5 CODE HUNTER",
+  "short_name": "CODE HUNTER",
+  "description": "Buscador de ofertas y promociones verificables de juegos PS5",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "orientation": "portrait"
+}
