@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>PS5 CODE HUNTER</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:#eee;font-family:Arial,sans-serif}
+header{text-align:center;padding:35px 15px;background:#111;border-bottom:2px solid #e50914}
+h1{color:#ff2633;font-size:30px;margin:0}
+header p{color:#aaa}
+main{max-width:750px;margin:auto;padding:20px}
+.panel{background:#151515;border:1px solid #333;border-radius:12px;padding:18px;margin:18px 0}
+h2{color:#ff303b}
+input{width:100%;padding:14px;border-radius:8px;border:1px solid #555;background:#090909;color:white;font-size:16px}
+button,.link{display:block;width:100%;padding:14px;margin-top:12px;border:0;border-radius:8px;background:#d91020;color:white;font-weight:bold;text-align:center;text-decoration:none;font-size:15px;cursor:pointer}
+.secondary{background:#292929}
+.item{padding:14px;border-bottom:1px solid #333}
+.item strong{color:#ff3844}
+small{color:#aaa}
+footer{text-align:center;color:#777;padding:30px}
+</style>
+</head>
+<body>
+<header>
+<h1>PS5 CODE HUNTER</h1>
+<p>GAME DEALS • PROMOCIONES • CÓDIGOS VERIFICABLES</p>
+</header>
+<main>
+<section class="panel">
+<h2>🔎 Buscador de promociones</h2>
+<input id="game" placeholder="Busca un juego: GTA, FIFA, Spider-Man...">
+<button onclick="search()">BUSCAR PROMOCIONES</button>
+</section>
+
+<section class="panel">
+<h2>🎮 Fuentes oficiales</h2>
+<div class="item">
+<strong>PlayStation Store</strong>
+<p><small>Ofertas y descuentos oficiales de PS5.</small></p>
+<a class="link" href="https://store.playstation.com/es-es/category/5d7f9c5e-2b3e-4a7e-8d6a-8c4c8f8e8e8e" target="_blank">CONSULTAR TIENDA</a>
+</div>
+<div class="item">
+<strong>PlayStation Plus</strong>
+<p><small>Juegos mensuales y ventajas de suscripción.</small></p>
+<a class="link" href="https://www.playstation.com/es-es/ps-plus/" target="_blank">VER PROMOCIONES</a>
+</div>
+<div class="item">
+<strong>Juegos gratuitos</strong>
+<p><small>Catálogo de juegos free-to-play.</small></p>
+<a class="link" href="https://store.playstation.com/es-es/category/8d4e8b4f-5f3d-4a3c-9a6f-9c9c9c9c9c9c" target="_blank">VER JUEGOS GRATIS</a>
+</div>
+</section>
+
+<section class="panel">
+<h2>🕵️ Investigación de códigos</h2>
+<p>Busca códigos y promociones publicados por fuentes verificables.</p>
+<button onclick="window.open('https://www.google.com/search?q=c%C3%B3digos+promocionales+PS5+juegos+gratis','_blank')">BUSCAR CÓDIGOS</button>
+<button class="secondary" onclick="window.open('https://www.google.com/search?q=PlayStation+Store+free+game+promotion','_blank')">BUSCAR REGALOS</button>
+</section>
+
+<section class="panel">
+<h2>⭐ Favoritos</h2>
+<input id="fav" placeholder="Nombre del juego">
+<button onclick="save()">GUARDAR FAVORITO</button>
+<div id="favorites"></div>
+</section>
+</main>
+<footer>PS5 CODE HUNTER · Proyecto independiente · No afiliado a Sony</footer>
+<script>
+function search(){
+let q=document.getElementById('game').value.trim();
+if(!q){alert('Escribe el nombre de un juego');return;}
+window.open('https://www.google.com/search?q='+encodeURIComponent(q+' PS5 ofertas promociones códigos oficiales'),'_blank');
+}
+function save(){
+let v=document.getElementById('fav').value.trim();
+if(!v)return;
+let a=JSON.parse(localStorage.getItem('ps5favorites')||'[]');
+if(!a.includes(v))a.push(v);
+localStorage.setItem('ps5favorites',JSON.stringify(a));
+document.getElementById('fav').value='';
+show();
+}
+function show(){
+let a=JSON.parse(localStorage.getItem('ps5favorites')||'[]');
+document.getElementById('favorites').innerHTML=a.map(x=>'<div class="item">⭐ '+x+'</div>').join('');
+}
+show();
+</script>
+</body>
+</html>
